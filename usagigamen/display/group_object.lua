@@ -6,16 +6,24 @@ local function new_group_object(options)
     local group_object = display_object.new_display_object(options)
     group_object._children = { }
 
-    function group_object:_update(dt)
+    function group_object:_update_children(dt)
         for _, child in ipairs(self._children) do
             child:update(dt)
         end
     end
 
-    function group_object:_draw()
+    function group_object:_update_display_object(dt)
+        self:_update_children(dt)
+    end
+
+    function group_object:_draw_children(dt)
         for _, child in ipairs(self._children) do
             child:draw(dt)
         end
+    end
+
+    function group_object:_draw_display_object(dt)
+        self:_draw_children(dt)
     end
 
     function group_object:remove_child(child)

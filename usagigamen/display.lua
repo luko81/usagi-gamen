@@ -3,6 +3,8 @@ local timer = require("usagigamen.timer")
 local rect_object = require("usagigamen.display.rect")
 local circ_object = require("usagigamen.display.circ")
 local text_object = require("usagigamen.display.text")
+local sprite_object = require("usagigamen.display.sprite")
+local animated_sprite_object = require("usagigamen.display.animated_sprite")
 local group_object = require("usagigamen.display.group")
 local scene_object = require("usagigamen.display.scene")
 
@@ -74,6 +76,18 @@ display.new_text = function(x, y, text, color, options)
     return text_object.new_text_object(x, y, text, color, options)
 end
 
+display.new_sprite = function(x, y, index, options)
+    options = options or {}
+    options.parent = options.parent or default_scene
+    return sprite_object.new_sprite_object(x, y, index, options)
+end
+
+display.new_animated_sprite = function(x, y, options)
+    options = options or {}
+    options.parent = options.parent or default_scene
+    return animated_sprite_object.new_animated_sprite_object(x, y, options)
+end
+
 display.new_group = function(options)
     options = options or {}
     options.parent = options.parent or default_scene
@@ -83,8 +97,8 @@ end
 function display:update(dt)
     current_scene:update(dt)
     default_scene:update(dt)
-    timer:_update(dt)
-    transition:_update(dt)
+    timer:update(dt)
+    transition:update(dt)
 end
 
 function display:draw(dt)

@@ -16,7 +16,7 @@ local function new_rect_object(x, y, width, height, color, options)
 
     local rect = shape_object.new_shape_object(options)
 
-    function rect:_draw()
+    function rect:_draw_rect(dt)
         local x, y = self:local_to_content(self.x - self.width * self.anchor_x, self.y - self.height * self.anchor_y)
         if self.color > 0 then
             gfx.rect_fill(x, y, self.width, self.height, self.color)
@@ -24,6 +24,10 @@ local function new_rect_object(x, y, width, height, color, options)
         if self.stroke_width > 0 and self.stroke_color > 0 then
             gfx.rect_ex(x, y, self.width, self.height, self.stroke_width, self.stroke_color)
         end
+    end
+
+    function rect:_draw_display_object(dt)
+        self:_draw_rect(dt)
     end
 
     return rect

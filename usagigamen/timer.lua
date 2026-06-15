@@ -90,7 +90,7 @@ timer.resume_all = function()
     for _, t in ipairs(timers) do t._paused = false end
 end
 
-function timer:_update(dt)
+function timer:update(dt)
     local dt_ms = dt * 1000
 
     -- Snapshot so listeners that add timers don't get advanced this frame.

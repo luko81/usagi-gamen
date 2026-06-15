@@ -137,9 +137,35 @@ function scene:create()
     group_2:insert(text_6)
 
     -- last column
-    -- local last_column_x = get_item_x(8) - PADDING
-    -- local last_rect = display.new_rect(last_column_x, get_item_y(1), ITEM_SIZE, ITEM_SIZE, gfx.COLOR_PEACH)
-    -- layout_group:insert(last_rect)
+    local last_column_x = get_item_x(8) - PADDING
+    -- local debug_rect = display.new_rect(last_column_x, get_item_y(1), ITEM_SIZE, ITEM_SIZE, gfx.COLOR_PEACH)
+    -- layout_group:insert(debug_rect)
+
+    -- sprite with animation
+    local sprite_1 = display.new_animated_sprite(last_column_x, get_item_y(1))
+    sprite_1.frame_index = 11
+    layout_group:insert(sprite_1)
+    -- sequence by frames
+    -- sprite_1:add_sequence("idle", { frames = { 11, 12, 13, 14 }, fps = 6 })
+    -- sequence by start and count
+    sprite_1:add_sequence("idle", { start = 11, count = 4, fps = 6 })
+    sprite_1:add_sequence("run", { start = 21, count = 16, fps = 12 })
+    sprite_1:play("idle")
+
+    -- sprite with flipped x
+    local sprite_2 = display.new_sprite(last_column_x, get_item_y(2), 11)
+    sprite_2.flip_x = true
+    layout_group:insert(sprite_2)
+
+    -- sprite with alpha
+    local sprite_3 = display.new_sprite(last_column_x, get_item_y(3), 11)
+    sprite_3.alpha = 0.5
+    layout_group:insert(sprite_3)
+
+    -- sprite with rotation
+    local sprite_4 = display.new_sprite(last_column_x, get_item_y(4), 11)
+    sprite_4.rotation = -90
+    layout_group:insert(sprite_4)
 end
 
 function scene:_update(dt)

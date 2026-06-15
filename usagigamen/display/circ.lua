@@ -23,7 +23,7 @@ local function new_circ_object(x, y, radius, color, options)
     
     circ.radius = radius or 0
 
-    function circ:_draw()
+    function circ:_draw_circle(dt)
         -- gfx.circ is draw with 0.5 anchor by default, so adjust for anchor and radius
         local x, y = self:local_to_content(self.x + self.radius - self.width * self.anchor_x, self.y + self.radius - self.height * self.anchor_y)
         if self.color > 0 then
@@ -32,6 +32,10 @@ local function new_circ_object(x, y, radius, color, options)
         if self.stroke_width > 0 and self.stroke_color > 0 then
             gfx.circ_ex(x, y, self.radius, self.stroke_width, self.stroke_color)
         end
+    end
+
+    function circ:_draw_display_object(dt)
+        self:_draw_circle(dt)
     end
 
     return circ

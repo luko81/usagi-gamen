@@ -10,9 +10,14 @@
 ### display.new_rect (returns rect)
 ### display.new_circ (returns circ)
 ### display.new_text (returns text)
+### display.new_sprite (returns sprite)
+### display.animated_sprite (returns animated_sprite)
 ### display.new_group (returns group)
 ### display.new_scene (returns scene)
 ### display.go_to_scene
+
+## timer
+## transition
 
 ## Nodes
 
@@ -22,6 +27,8 @@
 ### rect (parent shape_object)
 ### circ (parent shape_object)
 ### text (parent display_object)
+### sprite (parent display_object)
+### animated_sprite (parent sprite)
 ### group (parent group_object)
 ### scene (parent group_object)
 
@@ -32,16 +39,17 @@
         - rect
         - circ
     - text
+    - sprite
+        - animated_sprite
     - group_object
         - group
         - scene
 
 ## TODO:
-- timer
-- transition
+- sprite demo - platformer
 - paint demo - color selection
 - destory scene, add to scene demo
 - display_object.is_visible
+- sprite sequece on_complete event
 - scene.camera (x, y)
 - line, add to display object demo
-- sprite, animated sprite, add to display object demo

@@ -36,7 +36,7 @@ local function new_text_object(x, y, text, color, options)
     text_object.alpha = options.alpha or 1
     text_object.rotation = options.rotation or 0
 
-    function text_object:_draw()
+    function text_object:_draw_text(dt)
         local x, y = self:local_to_content(self.x - self.width * self.anchor_x, self.y - self.height * self.anchor_y)
         if self.text and self.text ~= "" and self.color > 0 then
             if self.scale ~= 1 or self.alpha ~= 1 or self.rotation ~= 0 then
@@ -46,6 +46,10 @@ local function new_text_object(x, y, text, color, options)
                 gfx.text(self.text, x, y, self.color)
             end
         end
+    end
+
+    function text_object:_draw_display_object(dt)
+        self:_draw_text(dt)
     end
 
     return text_object

@@ -2,7 +2,7 @@ local display = require("usagigamen.display")
 
 function _config()
   ---@type Usagi.Config
-  return { name = "Game", game_id = "com.usagiengine.usagigamen" }
+  return { name = "Game", game_id = "com.usagiengine.usagigamen", sprite_size = 32, }
 end
 
 function _init()
@@ -18,12 +18,7 @@ function _update(dt)
   display:update(dt)
 end
 
-local time = 0
 function _draw(dt)
-  -- gfx.clear(gfx.COLOR_DARK_PURPLE)
-  -- gfx.text("Hello, Usagi!", 10, 10, gfx.COLOR_WHITE)
-  -- gfx.rect_fill(display.CONTENT_CENTER_X - 25, display.CONTENT_CENTER_Y - 25, -50, -50, gfx.COLOR_PEACH)
-
   display:draw(dt)
 end
 

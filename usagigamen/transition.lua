@@ -101,7 +101,7 @@ transition.resume_all = function()
     for _, t in ipairs(transitions) do t._paused = false end
 end
 
-function transition:_update(dt)
+function transition:update(dt)
     local dt_ms = dt * 1000
 
     -- Snapshot so on_complete callbacks that add transitions don't get advanced

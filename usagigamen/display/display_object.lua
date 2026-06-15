@@ -39,6 +39,10 @@ local function new_display_object(options)
     display_object.anchor_x = options.anchor_x or display_defaults.anchor_x
     display_object.anchor_y = options.anchor_y or display_defaults.anchor_y
 
+    function display_object:_update_display_object(dt)
+        -- Override in subclasses.
+    end
+
     function display_object:_update(dt)
         -- Override in subclasses.
     end
@@ -48,16 +52,22 @@ local function new_display_object(options)
         if self.height < 0 then self.height = 0 end
     end
 
-    function display_object:_draw(dt)
-        -- Override in subclasses.
-    end
-
     function display_object:update(dt)
+        self:_update_display_object(dt)
         self:_update(dt)
         self:_validate()
     end
 
+    function display_object:_draw_display_object(dt)
+        -- Override in subclasses.
+    end
+
+    function display_object:_draw(dt)
+        -- Override in subclasses.
+    end
+
     function display_object:draw(dt)
+        self:_draw_display_object(dt)
         self:_draw(dt)
     end
 

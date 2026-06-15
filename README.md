@@ -20,11 +20,7 @@ loop calls `update` and `draw`, and the tree sorts itself out.
 
 ## ⚠️ The fine print
 
-This was built over a weekend. It is **probably not stable**. The API may change
-on a whim, there are sharp edges, and the TODO list (below) is longer than the
-feature list. But it's genuinely fun to play with, and that was the whole point.
-
-You can use it. If it breaks, you get to keep both pieces. 🫶
+This was built over a weekend. It is **probably not stable**. The API may change, there are sharp edges, and the TODO list is still longer than the feature list. But it's genuinely fun to play with, and that was the whole point.
 
 ## Requirements
 
@@ -125,8 +121,6 @@ timer.cancel(t)         -- 0 or negative iterations = repeat forever
 timer.cancel_all()
 ```
 
-Wire it into your loop: `timer:_update(dt)` (dt in seconds, from the engine).
-
 ### Transitions
 
 Linear tweens of `x`, `y`, `width`, `height`, `alpha`, and `scale`. No easing —
@@ -144,8 +138,6 @@ local handle = transition.to(rect, { alpha = 0, time = 500, tag = "fade" })
 transition.cancel(handle)   -- or transition.cancel(rect), or transition.cancel("fade")
 transition.cancel_all()
 ```
-
-Wire it in too: `transition:_update(dt)`.
 
 ## Examples
 
