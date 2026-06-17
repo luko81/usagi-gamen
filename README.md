@@ -1,3 +1,5 @@
+![Usagi Gamen](usagigamen/usagi-gamen.png)
+
 # 🐰 Usagi Gamen
 
 > A Solar2D-inspired display framework for the [Usagi Engine](https://usagiengine.com).
