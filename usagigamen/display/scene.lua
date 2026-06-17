@@ -11,6 +11,15 @@ local function new_scene_object(options)
     local scene = group_object.new_group_object(options)
     scene.color = options.scene_color or display_defaults.scene_color
 
+    scene.camera = {
+        x = 0,
+        y = 0,
+    }
+
+    function scene:local_to_content(x, y)
+        return x - self.camera.x, y - self.camera.y
+    end
+
     function scene:create()
         -- Override this method to add display objects to the scene.
     end

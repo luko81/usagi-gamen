@@ -73,10 +73,8 @@ local function new_display_object(options)
 
     function display_object:local_to_content(x, y)
         local parent = self._parent
-        while parent do
-            x = x + parent.x
-            y = y + parent.y
-            parent = parent._parent
+        if parent then
+            return parent:local_to_content(x + parent.x, y + parent.y)
         end
         return x, y
     end

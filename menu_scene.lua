@@ -23,6 +23,7 @@ function scene:create()
         { text = "Display Objects", scene = "examples.display_objects.scene" },
         { text = "Switching Scenes", scene = "examples.scenes.main_scene" },
         { text = "Transitions and Timers", scene = "examples.transitions.scene" },
+        { text = "Camera and Sprites", scene = "examples.camera.scene" },
         { text = "Pixel Paint", scene = "examples.paint.scene" },
     }
 

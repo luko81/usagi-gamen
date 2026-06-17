@@ -37,6 +37,9 @@ local function new_animated_sprite_object(x, y, options)
     end
 
     function sprite:play(name)
+        if current_sequence and current_sequence.name == name then
+            return
+        end
         if sequences[name] then
             current_sequence = sequences[name]
             current_sequence._current_frame_index = 1

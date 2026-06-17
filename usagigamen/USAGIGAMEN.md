@@ -51,5 +51,5 @@
 - destory scene, add to scene demo
 - display_object.is_visible
 - sprite sequece on_complete event
-- scene.camera (x, y)
+- width and height properties on groups
 - line, add to display object demo
