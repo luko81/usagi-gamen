@@ -1,5 +1,3 @@
-![Usagi Gamen](usagigamen/usagi-gamen.png)
-
 # 🐰 Usagi Gamen
 
 > A Solar2D-inspired display framework for the [Usagi Engine](https://usagiengine.com).
@@ -7,6 +5,8 @@
 
 *Gamen* (画面) is Japanese for "screen." *Usagi* (うさぎ) is "rabbit." So this is,
 roughly, "rabbit screen." It made sense at the time.
+
+![Usagi Gamen](usagigamen/usagi-gamen.png)
 
 ## What is this?
 
