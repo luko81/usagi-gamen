@@ -4,7 +4,7 @@ local transition = { }
 local transitions = { }
 
 -- Properties that can be tweened. Only the ones present in params are animated.
-local TRANSITION_PROPERTIES = { "x", "y", "width", "height", "alpha", "scale" }
+local TRANSITION_PROPERTIES = { "x", "y", "width", "height", "alpha", "scale", "radius" }
 
 -- Parameters:
 -- target - display object (or any table) whose properties are tweened
