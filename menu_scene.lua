@@ -24,7 +24,7 @@ function scene:create()
         { text = "Switching Scenes", scene = "examples.scenes.main_scene" },
         { text = "Transitions and Timers", scene = "examples.transitions.scene" },
         { text = "Camera and Sprites", scene = "examples.camera.scene" },
-        { text = "Pixel Paint", scene = "examples.paint.scene" },
+        { text = "Pixel Paint (Input)", scene = "examples.paint.scene" },
     }
 
     local menu_group = display.new_group()
