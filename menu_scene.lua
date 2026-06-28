@@ -39,12 +39,6 @@ function scene:create()
     local SELECTION_COLOR = gfx.COLOR_WHITE
     
     local buttons = { }
-    for i, item in ipairs(menu_items) do
-        local button = display.new_text(0, (i - 1) * ROW_HEIGHT + ROW_HEIGHT / 2, item.text)
-        button.color = TEXT_COLOR
-        menu_group:insert(button)
-        buttons[i] = button
-    end
 
     local selected_index = 1
 
@@ -75,6 +69,25 @@ function scene:create()
             end
             trans = transition.to(selection, { y = y, width = width, time = 100 })
         end
+    end
+
+    local function on_mouse_button_pressed(event)
+        local button = event.target
+        for i, b in ipairs(buttons) do
+            if b == button then
+                select_item(i, true)
+                display.go_to_scene(menu_items[i].scene)
+                break
+            end
+        end
+    end
+
+    for i, item in ipairs(menu_items) do
+        local button = display.new_text(0, (i - 1) * ROW_HEIGHT + ROW_HEIGHT / 2, item.text)
+        button.color = TEXT_COLOR
+        menu_group:insert(button)
+        buttons[i] = button
+        button:add_event_listener(button.EVENTS.MOUSE_PRESSED, input.MOUSE_LEFT, on_mouse_button_pressed)
     end
 
     select_item(selected_index, false)

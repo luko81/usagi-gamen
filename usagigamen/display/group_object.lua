@@ -13,6 +13,7 @@ local function new_group_object(options)
     end
 
     function group_object:_update_display_object(dt)
+        self:_update_event_handler(dt)
         self:_update_children(dt)
     end
 

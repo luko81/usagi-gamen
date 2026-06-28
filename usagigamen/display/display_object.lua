@@ -1,4 +1,5 @@
 local display_defaults = require("usagigamen.display.defaults")
+local event_handler_object = require("usagigamen.display.input_event_handler")
 
 -- Parameters:
 -- options:
@@ -11,6 +12,9 @@ local function new_display_object(options)
     options = options or { }
 
     local display_object = { }
+    local event_handler = nil
+
+    display_object.EVENTS = event_handler_object.EVENTS
 
     function display_object:_property_changed(key, value)
         -- Override in subclasses.
@@ -39,8 +43,14 @@ local function new_display_object(options)
     display_object.anchor_x = options.anchor_x or display_defaults.anchor_x
     display_object.anchor_y = options.anchor_y or display_defaults.anchor_y
 
+    function display_object:_update_event_handler(dt)
+        if event_handler then
+            event_handler:update(dt)
+        end
+    end
+
     function display_object:_update_display_object(dt)
-        -- Override in subclasses.
+        self:_update_event_handler(dt)
     end
 
     function display_object:_update(dt)
@@ -109,6 +119,18 @@ local function new_display_object(options)
                 return
             end
         end
+    end
+
+    function display_object:add_event_listener(event_name, key_or_button, listener)
+        if not event_handler then
+            event_handler = event_handler_object.new_event_handler(self)
+        end
+        event_handler:add_event_listener(event_name, key_or_button, listener)
+    end
+
+    function display_object:remove_event_listener(event_name, key_or_button, listener)
+        if not event_handler then return end
+        event_handler:remove_event_listener(event_name, key_or_button, listener)
     end
 
     return display_object
